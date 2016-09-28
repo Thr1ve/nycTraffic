@@ -1,5 +1,9 @@
 
-export default function (state = {}, action) {
+const defaultState = {
+  foo: 'bar'
+};
+
+export default function (state = defaultState, action) {
   switch (action.type) {
     default:
       return state;
