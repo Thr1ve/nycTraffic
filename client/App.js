@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { getPaths } from './actions';
 
 const App = React.createClass({
   componentDidMount() {
-    // call api?
+    this.props.dispatch(getPaths())
   },
 
   render() {
@@ -12,6 +15,12 @@ const App = React.createClass({
       </div>
     )
   }
-})
+});
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    ...state
+  }
+}
+
+export default connect(mapStateToProps)(App);
