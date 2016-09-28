@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const current = require('./queries/current');
+const getCurrent = require('./queries/getCurrent');
 
 const router = Router();
 
-router.get('/current', current);
+router.get('/getCurrent', getCurrent);
 
 module.exports = router;
