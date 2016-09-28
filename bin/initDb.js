@@ -3,7 +3,7 @@ const connect = require('./connect');
 
 // TODO: move these constants into connect.js?
 const DATABASE = 'nycTraffic';
-const TABLE_NAME = 'data';
+const TABLES = ['streets', 'updates'];
 
 const createDbIfNeeded = (dbName, conn) =>
   r.dbList().run(conn)
@@ -31,7 +31,7 @@ console.log('Initializing Database...');
 
 connect().then(conn =>
   createDbIfNeeded(DATABASE, conn)
-    .then(() => createTableIfNeeded(TABLE_NAME, conn))
+    .then(() => Promise.all(TABLES.map(name => createTableIfNeeded(name, conn))))
     .then(() => {
       console.log('Database Initialized.');
       conn.close();
