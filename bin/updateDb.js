@@ -4,14 +4,13 @@ const connect = require('./connect');
 const getTrafficData = require('./getTrafficData');
 const writeToLog = require('./writeToLog');
 
-const db = string => r.db(string);
-
 const insertItem = (item, conn) =>
-  db('nycTraffic').table('data').insert(
+    r.db('nycTraffic').table('data').insert(
     // TODO: create the id when we format the data in getTrafficData.js instead?
     Object.assign({}, item, {
-      id: [item.linkName, new Date(item.DataAsOf)], 
-      DataAsOf: new Date(item.DataAsOf)
+      id: [item.linkName, new Date(item.DataAsOf)],
+      DataAsOf: new Date(item.DataAsOf),
+      linkPoints: formatLinkPoints(item.linkPoints)
     })
   ).run(conn)
 
@@ -28,4 +27,17 @@ module.exports = function updateDb() {
       )
       .catch(err => console.log(err));
   });
+}
+
+// TODO: the last link pair is sometimes one of these invalid cases:
+//    - second item is incomplete:
+//        - [ "40.63086", "-" ]
+//        - [ "40.7607405", "-7" ]
+//        - [ "40.69944", "-73." ]
+//    - only one item: [ "40.6178" ]
+function formatLinkPoints(str) {
+  return str
+    .trim()
+    .split(' ')
+    .map(pair => pair.split(','))
 }
