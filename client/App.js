@@ -1,4 +1,4 @@
-import './app.css';
+import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -18,14 +18,14 @@ const App = React.createClass({
         <Dashboard />
         <Map />
       </div>
-    )
+    );
   }
 });
 
 function mapStateToProps(state) {
   return {
     ...state
-  }
+  };
 }
 
 export default connect(mapStateToProps)(App);
