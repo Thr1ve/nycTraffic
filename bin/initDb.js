@@ -1,5 +1,5 @@
 const r = require('rethinkdb');
-const connect = require('./connect');
+const connect = require('../server/lib/connect');
 
 // TODO: move these constants into connect.js?
 const DATABASE = 'nycTraffic';

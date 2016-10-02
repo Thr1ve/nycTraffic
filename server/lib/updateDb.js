@@ -1,7 +1,7 @@
 const moment = require('moment');
 const connect = require('./connect');
 const getTrafficData = require('./getTrafficData');
-const writeToLog = require('./writeToLog');
+const writeToLog = require('../../bin/writeToLog');
 const insertItem = require('./insertItem');
 
 const log = str => {

@@ -1,5 +1,5 @@
 const r = require('rethinkdb');
-const connect = require('./connect');
+const connect = require('../server/lib/connect');
 
 const DATABASE = 'nycTraffic';
 
