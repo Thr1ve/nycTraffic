@@ -1,17 +1,20 @@
+import './app.css';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getPaths } from './actions';
+import Map from './containers/Map'
+
+import { getStreets } from './actions';
 
 const App = React.createClass({
   componentDidMount() {
-    this.props.dispatch(getPaths())
+    this.props.dispatch(getStreets())
   },
 
   render() {
     return (
       <div>
-        Hi
+        <Map />
       </div>
     )
   }
