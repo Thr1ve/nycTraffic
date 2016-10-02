@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Map from './containers/Map'
+import Dashboard from './containers/Dashboard';
 
 import { getStreets } from './actions';
 
@@ -14,6 +15,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
+        <Dashboard />
         <Map />
       </div>
     )
