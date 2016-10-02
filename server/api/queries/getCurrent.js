@@ -1,5 +1,5 @@
 const r = require('rethinkdb');
-const connect = require('../../../bin/connect');
+const connect = require('../../lib/connect');
 
 module.exports = function(req, res) {
   connect()
@@ -9,7 +9,6 @@ module.exports = function(req, res) {
       .limit(1)
       .run(conn)
     )
-    .then(cursor => cursor.toArray().then(v => res.json(v))
-    )
+    .then(cursor => cursor.toArray().then(v => res.json(v)))
     .catch(err => res.end(err));
 }
