@@ -1,5 +1,6 @@
 const r = require('rethinkdb');
 const sanitizeItem = require('./sanitizeItem');
+const { DB_NAME } = require('../config/db');
 
 const createStreet = ({ Borough, linkName, linkPoints }) => ({
   id: linkName,
@@ -18,7 +19,7 @@ const createUpdate = ({ Speed, TravelTime, DataAsOf, linkName }) => ({
 module.exports = function insertItem(itemData, conn) {
   const item = sanitizeItem(itemData);
   return Promise.all([
-    r.db('nycTraffic').table('streets').insert(createStreet(item)).run(conn),
-    r.db('nycTraffic').table('updates').insert(createUpdate(item)).run(conn)
+    r.db(DB_NAME).table('streets').insert(createStreet(item)).run(conn),
+    r.db(DB_NAME).table('updates').insert(createUpdate(item)).run(conn)
   ]);
 }

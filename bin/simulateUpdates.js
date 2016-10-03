@@ -1,9 +1,10 @@
 const r = require('rethinkdb');
 const connect = require('../server/lib/connect');
+const { DB_NAME } = require('../server/config/db');
 
 connect().then(conn => {
-  r.db('nycTraffic').table('streets').forEach(street =>
-    r.db('nycTraffic').table('updates').insert({
+  r.db(DB_NAME).table('streets').forEach(street =>
+    r.db(DB_NAME).table('updates').insert({
       id: [r.now(), street('id')],
       DataAsOf: r.now(),
       linkName: street('id'),
