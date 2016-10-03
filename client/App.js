@@ -22,10 +22,4 @@ const App = React.createClass({
   }
 });
 
-function mapStateToProps(state) {
-  return {
-    ...state
-  };
-}
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);
