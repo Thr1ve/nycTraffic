@@ -1,22 +1,17 @@
+import { Map } from 'immutable';
 import { TOGGLE_WATER, TOGGLE_STREETS } from '../actions';
 
-const defaultState = {
+const defaultState = Map({
   water: true,
   streets: true
-};
+});
 
 export default function(state = defaultState, action) {
   switch(action.type) {
     case TOGGLE_WATER:
-      return {
-        ...state,
-        water: !state.water
-      };
+      return state.set('water', !state.get('water'))
     case TOGGLE_STREETS:
-      return {
-        ...state,
-        streets: !state.streets
-      };
+      return state.set('streets', !state.get('streets'))
     default:
       return state;
   }

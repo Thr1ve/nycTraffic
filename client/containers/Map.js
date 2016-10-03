@@ -18,13 +18,11 @@ import WaterOutline from '../components/WaterOutline';
 
 const Map = React.createClass({
   render() {
-    const { displayed: { water, streets }, paths } = this.props;
-    console.log(this.props);
-    console.log(getSpeedColor(3.3));
+    const { streetsVisible, waterVisible, paths } = this.props;
     return (
       <SVG>
-        {streets && paths.paths.map((path, i) => <Street key={i} path={`M${path}`} />)}
-        {water && <WaterOutline strokeWidth={0.3} stroke="#50E3C2"/>}
+        {streetsVisible && paths.map((path, i) => <Street key={i} path={`M${path}`} />)}
+        {waterVisible && <WaterOutline strokeWidth={0.3} stroke="#50E3C2"/>}
       </SVG>
     );
   }
@@ -32,7 +30,9 @@ const Map = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    ...state
+    streetsVisible: state.displayed.get('streets'),
+    waterVisible: state.displayed.get('water'),
+    paths: state.streets.get('paths')
   }
 }
 
