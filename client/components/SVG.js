@@ -12,7 +12,7 @@ const SVG = React.createClass({
         >
         {this.props.children}
       </svg>
-    )
+    );
   }
 });
 

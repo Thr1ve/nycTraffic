@@ -1,3 +1,12 @@
+//                  Y           X
+// Top:         40.92
+// Bottom:      40.49
+// Left:                   -74.26
+// Right:                  -73.69
+
+// Height:      0.43
+// Length:                  0.57
+
 const settings = {
   h: 0.43,
   w: 0.57,

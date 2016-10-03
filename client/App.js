@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import NycMap from './containers/NycMap'
+import NycMap from './containers/NycMap';
 import Dashboard from './containers/Dashboard';
 
 import { init } from './actions';

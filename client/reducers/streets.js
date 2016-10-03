@@ -6,6 +6,7 @@ const defaultState = Map({});
 
 const Update = Record({ Speed: '0', TravelTime: '0' });
 
+// TODO: This should be two reducers
 export default function streets(state = defaultState, action) {
   switch (action.type) {
     case SET_STREETS:

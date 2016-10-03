@@ -18,7 +18,7 @@ module.exports = function getTrafficData() {
     const [columnNames, ...dataAsArray] = txt
       .split('\r\n')
       .map(line => processLine(line))
-      .filter(line => isValidData(line))
+      .filter(line => isValidData(line));
 
     return Promise.resolve(
       // use columnNames to turn each item into an object with correct keys

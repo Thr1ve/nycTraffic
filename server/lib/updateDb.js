@@ -14,8 +14,8 @@ module.exports = function updateDb() {
     connect()
       .then(conn => Promise.all(data.map(item => insertItem(item, conn)))
         .then(items =>{
-          log(`${moment(Date.now())}  --  ${items.filter(item => !item[0].errors).length} streets added`)
-          log(`${moment(Date.now())}  --  ${items.filter(item => !item[1].errors).length} updates added`)
+          log(`${moment(Date.now())}  --  ${items.filter(item => !item[0].errors).length} streets added`);
+          log(`${moment(Date.now())}  --  ${items.filter(item => !item[1].errors).length} updates added`);
           conn.close();
         })
       )

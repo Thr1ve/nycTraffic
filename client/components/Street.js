@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { getTravelTimeColor } from '../lib'
+import { getTravelTimeColor } from '../lib';
 
 const Street = ({ path, travelTime, streetName }) =>
   <path

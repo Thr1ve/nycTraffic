@@ -10,7 +10,7 @@ const createDbIfNeeded = (dbName, conn) =>
     .then(list => {
       if (!list.includes(dbName)) {
         console.log(`  Database "${dbName}" not found. Creating...`);
-        return r.dbCreate(dbName).run(conn)
+        return r.dbCreate(dbName).run(conn);
       }
       console.log(`  Database "${dbName}" already exists.`);
       return Promise.resolve();
@@ -21,7 +21,7 @@ const createTableIfNeeded = (tableName, conn) =>
     .then(list => {
       if (!list.includes(tableName)) {
         console.log(`  Table "${tableName}" not found. Creating...`);
-        return r.db(DATABASE).tableCreate(tableName).run(conn)
+        return r.db(DATABASE).tableCreate(tableName).run(conn);
       }
       console.log(`  Table "${tableName}" already exists.`);
       return Promise.resolve();
@@ -36,4 +36,4 @@ connect().then(conn =>
       console.log('Database Initialized.');
       conn.close();
     })
-)
+);

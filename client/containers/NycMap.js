@@ -1,20 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getSpeedColor } from '../lib/color.js'
+import { getSpeedColor } from '../lib/color.js';
 
 import SVG from '../components/SVG';
 import Street from '../components/Street';
 import WaterOutline from '../components/WaterOutline';
-
-//                  Y           X
-// Top:         40.92
-// Bottom:      40.49
-// Left:                   -74.26
-// Right:                  -73.69
-
-// Height:      0.43
-// Length:                  0.57
 
 const NycMap = React.createClass({
   render() {
@@ -43,7 +34,7 @@ function mapStateToProps(state) {
     streetsVisible: state.displayed.get('streets'),
     waterVisible: state.displayed.get('water'),
     streets: state.streets.toList()
-  }
+  };
 }
 
 export default connect(mapStateToProps)(NycMap);
