@@ -9,7 +9,9 @@ const sanitizeItem = item =>
   Object.assign({}, item, {
     linkName: item.linkName.toUpperCase(),
     linkPoints: formatLinkPoints(item),
-    DataAsOf: new Date(item.DataAsOf)
+    DataAsOf: new Date(item.DataAsOf),
+    Speed: Number(item.Speed),
+    TravelTime: Number(item.TravelTime)
   });
 
 module.exports = sanitizeItem;
