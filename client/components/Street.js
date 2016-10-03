@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react';
+import { getTravelTimeColor } from '../lib'
 
-const Street = React.createClass({
-  render() {
-    return (
-      <path d={this.props.path} fill="none" strokeWidth={0.3} stroke="#27c93f" />
-    );
-  }
-});
+const Street = ({ path, travelTime }) =>
+  <path
+    d={path}
+    fill="none"
+    strokeWidth={0.3}
+    stroke={getTravelTimeColor(travelTime)}
+  />;
 
 Street.propTypes = {
   path: PropTypes.string.isRequired
