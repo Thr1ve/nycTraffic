@@ -26,6 +26,7 @@ const Map = React.createClass({
           streetsVisible && streets.map((street, i) =>
             <Street
               key={i}
+              streetName={street.get('name')}
               path={`M${street.get('svgCoords')}`}
               speed={street.getIn(['mostRecentUpdate', 'Speed'])}
               travelTime={street.getIn(['mostRecentUpdate', 'TravelTime'])}

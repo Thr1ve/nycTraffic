@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import { getTravelTimeColor } from '../lib'
 
-const Street = ({ path, travelTime }) =>
+const Street = ({ path, travelTime, streetName }) =>
   <path
+    id={streetName}
     d={path}
     fill="none"
     strokeWidth={0.3}
@@ -10,7 +11,8 @@ const Street = ({ path, travelTime }) =>
   />;
 
 Street.propTypes = {
-  path: PropTypes.string.isRequired
+  path: PropTypes.string.isRequired,
+  travelTime: PropTypes.string.isRequired
 };
 
 export default Street;
