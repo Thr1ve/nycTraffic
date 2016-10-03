@@ -4,7 +4,7 @@ import { toSVGPath } from '../lib';
 
 const defaultState = Map({});
 
-const Update = Record({ Speed: 0, TravelTime: 0 });
+const Update = Record({ Speed: '0', TravelTime: '0' });
 
 export default function streets(state = defaultState, action) {
   switch (action.type) {
