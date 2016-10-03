@@ -11,17 +11,17 @@ const settings = {
   h: 0.43,
   w: 0.57,
   m: 350,
-  hSkew: 50,
-  vSkew: 20,
+  hOffset: 50,
+  vOffset: 20,
 };
 
-const defaults = { h: 0, w: 0, m: 1, hSkew: 0, vSkew: 0 };
+const defaults = { h: 0, w: 0, m: 1, hOffset: 0, vOffset: 0 };
 
-const translateX = (str, { h, w, m, hSkew, vSkew } = defaults) =>
-  Math.abs(str - -73.69 + w) * m - hSkew;
+const translateX = (str, { h, w, m, hOffset, vOffset } = defaults) =>
+  Math.abs(str - -73.69 + w) * m - hOffset;
 
-const translateY = (str, { h, w, m, hSkew, vSkew } = defaults) =>
-  Math.abs(str - 40.49 - h ) * m - vSkew;
+const translateY = (str, { h, w, m, hOffset, vOffset } = defaults) =>
+  Math.abs(str - 40.49 - h ) * m - vOffset;
 
 export const toSVGCoords = ([lat, long], options) =>
   ({ x: translateX(long, options), y: translateY(lat, options) });
