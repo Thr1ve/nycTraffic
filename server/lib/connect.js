@@ -1,5 +1,3 @@
-/* This also provides a convenient space for
-  dealing with env variables later */
 const r = require('rethinkdb');
 
 const connect = () =>

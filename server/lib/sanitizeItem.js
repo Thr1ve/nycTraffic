@@ -1,4 +1,4 @@
-const correctedStreets = require('../../bin/correctedStreets');
+const correctedStreets = require('../../data/correctedStreets');
 
 const MIN_LAT = 40.49;
 const MAX_LAT = 40.92;

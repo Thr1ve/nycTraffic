@@ -1,4 +1,4 @@
-import io from 'socket.io-client'
+import io from 'socket.io-client';
 import { updateStreet } from '../actions';
 
 export function addSockets(dispatch) {

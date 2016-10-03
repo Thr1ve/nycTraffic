@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
     "cron": "node ./bin/cronJob.js",
     "db:init": "node ./bin/initDb.js",
@@ -13,8 +12,7 @@
     "db:update": "node ./bin/simulateUpdates.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Gordon Buhler",
   "dependencies": {
     "axios": "^0.14.0",
     "babel-loader": "^6.2.5",

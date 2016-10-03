@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { toggleWater, toggleStreets } from '../actions';
 import { blue } from '../lib';
 
-const style = { position: 'fixed', top: '0', left: '0', color: blue };
+const style = { position: 'fixed', padding: 10, top: 0, left: 0, color: blue };
 
 const Dashboard = React.createClass({
 
