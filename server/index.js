@@ -8,6 +8,7 @@ const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const api = require('./api');
+const addSockets = require('./lib/addSockets');
 const config = require('../webpack.config.js');
 
 const PORT = 8000;
@@ -15,6 +16,8 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 const app = express();
 const server = http.createServer(app);
+
+addSockets(server);
 
 app.use('/api', api);
 
