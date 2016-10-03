@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Map from './containers/Map'
+import NycMap from './containers/NycMap'
 import Dashboard from './containers/Dashboard';
 
 import { init } from './actions';
@@ -16,7 +16,7 @@ const App = React.createClass({
     return (
       <div>
         <Dashboard />
-        <Map />
+        <NycMap />
       </div>
     );
   }

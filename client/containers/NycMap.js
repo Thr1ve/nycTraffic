@@ -16,7 +16,7 @@ import WaterOutline from '../components/WaterOutline';
 // Height:      0.43
 // Length:                  0.57
 
-const Map = React.createClass({
+const NycMap = React.createClass({
   render() {
     const { streetsVisible, waterVisible, streets } = this.props;
     return (
@@ -46,4 +46,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Map);
+export default connect(mapStateToProps)(NycMap);
