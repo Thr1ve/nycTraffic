@@ -9,7 +9,8 @@
     "cron": "node ./bin/cronJob.js",
     "db:init": "node ./bin/initDb.js",
     "db:wipe": "node ./bin/wipeDb.js",
-    "db:reset": "npm run db:wipe && npm run db:init"
+    "db:reset": "npm run db:wipe && npm run db:init",
+    "db:update": "node ./bin/simulateUpdates.js"
   },
   "keywords": [],
   "author": "",
