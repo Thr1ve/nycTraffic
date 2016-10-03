@@ -3,6 +3,7 @@ require('./lib/startWorker');
 const path = require('path');
 const http = require('http');
 const express = require('express');
+const morgan = require('morgan');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -18,6 +19,8 @@ const app = express();
 const server = http.createServer(app);
 
 addSockets(server);
+
+app.use(morgan('dev'));
 
 app.use('/api', api);
 
