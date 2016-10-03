@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import Map from './containers/Map'
 import Dashboard from './containers/Dashboard';
 
-import { getStreets } from './actions';
+import { init } from './actions';
 
 const App = React.createClass({
   componentDidMount() {
-    this.props.dispatch(getStreets())
+    this.props.dispatch(init());
   },
 
   render() {
