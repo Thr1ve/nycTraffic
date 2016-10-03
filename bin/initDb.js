@@ -4,6 +4,10 @@ const connect = require('../server/lib/connect');
 // TODO: move these constants into connect.js?
 const DATABASE = 'nycTraffic';
 const TABLES = ['streets', 'updates'];
+const SECONDARY_INDEXES = [
+  { tableName: 'updates', index: 'DataAsOf' },
+  { tableName: 'updates', index: 'linkName' }
+];
 
 const createDbIfNeeded = (dbName, conn) =>
   r.dbList().run(conn)
@@ -27,11 +31,22 @@ const createTableIfNeeded = (tableName, conn) =>
       return Promise.resolve();
     });
 
+const createSecondaryIndex = ({ tableName, index }, conn) => {
+  console.log(`Creating secondary index "${index}"...`);
+  return r.db(DATABASE).table(tableName).indexCreate(index).run(conn)
+    .then(() => r.db(DATABASE).table(tableName).indexWait(index).run(conn))
+    .then(() => {
+      console.log(`Secondary index "${index}" created and ready.`);
+      return Promise.resolve();
+    })
+}
+
 console.log('Initializing Database...');
 
 connect().then(conn =>
   createDbIfNeeded(DATABASE, conn)
     .then(() => Promise.all(TABLES.map(name => createTableIfNeeded(name, conn))))
+    .then(() => Promise.all(SECONDARY_INDEXES.map(indexObj => createSecondaryIndex(indexObj, conn))))
     .then(() => {
       console.log('Database Initialized.');
       conn.close();
