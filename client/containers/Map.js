@@ -18,11 +18,20 @@ import WaterOutline from '../components/WaterOutline';
 
 const Map = React.createClass({
   render() {
-    const { streetsVisible, waterVisible, paths } = this.props;
+    const { streetsVisible, waterVisible, streets } = this.props;
     return (
       <SVG>
-        {streetsVisible && paths.map((path, i) => <Street key={i} path={`M${path}`} />)}
         {waterVisible && <WaterOutline strokeWidth={0.3} stroke="#50E3C2"/>}
+        {
+          streetsVisible && streets.map((street, i) =>
+            <Street
+              key={i}
+              path={`M${street.get('svgCoords')}`}
+              speed={street.getIn(['mostRecentUpdate', 'Speed'])}
+              travelTime={street.getIn(['mostRecentUpdate', 'TravelTime'])}
+            />
+          )
+        }
       </SVG>
     );
   }
@@ -32,7 +41,7 @@ function mapStateToProps(state) {
   return {
     streetsVisible: state.displayed.get('streets'),
     waterVisible: state.displayed.get('water'),
-    paths: state.streets.get('paths')
+    streets: state.streets.toList()
   }
 }
 
