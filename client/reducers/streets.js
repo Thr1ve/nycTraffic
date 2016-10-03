@@ -6,7 +6,6 @@ const defaultState = Map({});
 
 const Update = Record({ Speed: '0', TravelTime: '0' });
 
-// TODO: This should be two reducers
 export default function streets(state = defaultState, action) {
   switch (action.type) {
     case SET_STREETS:
@@ -16,7 +15,7 @@ export default function streets(state = defaultState, action) {
           rawLatLong: street.linkPoints,
           name: street.id,
           borough: street.Borough,
-          mostRecentUpdate: new Update()
+          mostRecentUpdate: new Update(street.mostRecentUpdate)
         }));
       }, Map({}));
     case UPDATE_STREET:
