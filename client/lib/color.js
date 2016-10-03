@@ -5,6 +5,6 @@ export const yellow = '#FFBD2E';
 export const red = '#FF5F56';
 export const blue = '#50E3C2';
 
-const speedScale = chroma.scale([green, yellow, red]).domain([1, 10]);
+const travelTimeScale = chroma.scale([red, yellow, green]).domain([10, 1000]);
 
-export const getSpeedColor = n => speedScale(n).hex();
+export const getTravelTimeColor = n => travelTimeScale(n).hex();
