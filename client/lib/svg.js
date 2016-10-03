@@ -1,3 +1,11 @@
+const settings = {
+  h: 0.43,
+  w: 0.57,
+  m: 350,
+  hSkew: 50,
+  vSkew: 20,
+};
+
 const defaults = { h: 0, w: 0, m: 1, hSkew: 0, vSkew: 0 };
 
 const translateX = (str, { h, w, m, hSkew, vSkew } = defaults) =>
@@ -8,3 +16,8 @@ const translateY = (str, { h, w, m, hSkew, vSkew } = defults) =>
 
 export const toSVGCoords = ([lat, long], options) =>
   ({ x: translateX(long, options), y: translateY(lat, options) });
+
+export const toSVGPath = coords => coords
+  .map(c => toSVGCoords(c, settings))
+  .map(c => `${c.x},${c.y}`)
+  .join(' ');
